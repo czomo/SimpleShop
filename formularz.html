@@ -1,0 +1,136 @@
+<!DOCTYPE HTML> 
+<html lang='pl'> 
+<head>
+	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BICYKL - sklep rowerowy -</title>
+	<link rel='stylesheet' href='css/style.css'>
+            <script>
+                function usun(){
+                    localStorage.removeItem('item');
+                }
+                function wyswietl(){
+    var cos = JSON.parse(localStorage.getItem('item'));
+    alert("Zapisano dane: \n imie: "+cos.name+"\n email: "+cos.email+"\n numer: "+cos.number);
+
+                }
+                function zapisz(){
+                    var spis={};
+    spis.name=document.getElementById('name').value;
+    spis.email=document.getElementById('email').value;
+    spis.number=document.getElementById('number').value;
+    localStorage.setItem('item', JSON.stringify(spis));
+                }
+              function pokazDane()
+{
+   
+ var dane="Następujące dane zostaną wysłane:\n";
+ dane+="Email: "+document.getElementById('email').value+"\n"+
+         "Imie i nazwisko: "+document.getElementById('name').value+"\n"+
+          "Telefon: "+document.getElementById('number').value+"\n";
+  
+if (document.getElementById('gorski').selectedIndex){dane+="Typ roweru: "+document.getElementById('gorski').value+"\n";}
+if (document.getElementById('miejski').selectedIndex){dane+="Typ roweru: "+document.getElementById('miejski').value+"\n";} 
+if (document.getElementById('szosa').selectedIndex){dane+="Typ roweru: "+document.getElementById('szosa').value+"\n";} 
+if (document.getElementById('small').checked) {dane+="Rozmiar ramy:"+document.getElementById('small').value+"\n";}
+if (document.getElementById('medium').checked) {dane+="Rozmiar ramy:"+document.getElementById('medium').value+"\n";}
+if (document.getElementById('big').checked) {dane+="Rozmiar ramy:"+document.getElementById('big').value+"\n";}
+if (document.getElementById("add1").checked){dane+="Dodatki: "+document.getElementById("add1").value+"\n";}
+if (document.getElementById("add2").checked){dane+="Dodatki: "+document.getElementById("add2").value+"\n";}
+if (document.getElementById("add3").checked){dane+="Dodatki: "+document.getElementById("add3").value+"\n";}
+if (document.getElementById("add4").checked){dane+="Dodatki: "+document.getElementById("add4").value+"\n";}
+if (document.getElementById("add5").checked){dane+="Dodatki: "+document.getElementById("add5").value+"\n";}
+if (document.getElementById("add6").checked){dane+="Dodatki: "+document.getElementById("add6").value+"\n";}
+        
+
+dane+="Dodatkowe informacje: "+document.getElementById('text').value;         
+ if (window.confirm(dane)) return true;
+ else 
+     return false;
+};</script>
+</head>
+<body>
+
+<div class='container'>
+
+	<!-- naglowek --> 
+	<header>
+            <h4>Sklep rowerowy</h4>
+            <h2>Bicykl - wszystko dla twojego roweru</h2>
+		<img src="images/header.jpg" alt=""/>
+	</header>
+	
+	<!-- menu --> 
+	<aside>
+		<nav>
+			<ul>
+				<li><a href="index.html">Start</a></li>
+				<li><a href="formularz.html">Formularz</a></li>
+				<li><a href="galeria.html">Galeria</a></li>
+				<li><a href="kontakt.html">Kontakt</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<!-- txt -->
+	<section id="main">
+		
+		
+  <form action="/zamowienia.php" method="post">
+     <div><h2>Formularz zamówienia</h2></div>
+        <fieldset>
+            <legend>Dane</legend>
+            <label for="name"> Imię i nazwisko</label>
+            <input type="text" name="contact_person" id="name" required pattern="[A-Za-z]{3,} [A-Za-z]{2,}" /><br/>
+            <label for="email"> e-mail</label>
+            <input type="email" name="email" id="email"  placeholder="j.kowalski@domena.pl" required/><br/>
+            <label for="number">Telefon</label>
+            <input type="number" name="number" id="number" pattern="^[0-9\-\+\s\(\)]{8}" placeholder="+48123456789" required/><br/>
+        </fieldset>
+        <fieldset>
+            <legend>Typ roweru</legend>
+            <input list="typroweru" name="typroweru" required/>
+            <datalist id="typroweru"  >
+                <option id="gorski" value="Górski">
+                <option id="miejski" value="Miejski">
+                <option id="szosa" value="Szosowy">
+            </datalist><br>
+        </fieldset>
+        <fieldset>
+            <legend>Rozmiar ramy</legend>
+            M <input type="radio" id="small" name="size" value="small"  /><br>
+            L <input type="radio" id="medium" name="size" value="medium" /><br>
+            XL <input type="radio" id="big" name="size" value="big" /><br>
+        </fieldset>
+        <fieldset>
+            <legend>Akcesoria</legend>
+            <input type="checkbox" id="add1"  value="Błotniki"/>Błotniki<br>
+            <input type="checkbox" id="add2"  value="Światła"/>Światła<br>
+            <input type="checkbox" id="add3"  value="Zestaw"/>Zestaw naprawczy<br>
+            <input type="checkbox" id="add4"  value="Dzwonek"/>Dzwonek<br>
+            <input type="checkbox" id="add5"  value="Bagażnik"/>Bagażnik<br>
+            <input type="checkbox" id="add6"  value="Uchwyt"/>Uchwyt na bidon<br>
+
+        </fieldset>
+        <fieldset>
+            <legend>Dodatkowe informacje i prośby</legend><br>
+            <textarea cols="70" rows="7" id="text"></textarea><br />         
+        </fieldset>
+        <input type="reset" value="Wyczyść wpowadzone dane"/>
+        <input type="submit" onclick="pokazDane()" value="Zamów i zapłać" />
+        <input type="submit" onclick="zapisz()" value="Zapisz" />
+        <input type="submit" onclick="wyswietl()" value="Wyświetl" />
+        <input type="submit" onclick="usun()" value="Usuń local storage" />
+
+        </form>
+	</section>
+	
+	<!-- stopka -->
+	<footer>
+		<p>Tomasz DUL© 2017</p>
+	</footer>
+
+</div>
+
+</body>
+</html>

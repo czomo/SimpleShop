@@ -1,0 +1,87 @@
+<!DOCTYPE HTML> 
+<html lang='pl'> 
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+	<title>BICYKL - sklep rowerowy -</title>
+	<link rel='stylesheet' href='css/style.css'>
+        <script>
+ function showLocation(position) {
+ var longitude = position.coords.longitude;
+ var latitude = position.coords.latitude;
+ var output = document.getElementById("geo");
+ output.innerHTML = "<p>Szerokość geograficzna: " + latitude + " Wysokość geograficzna: " + longitude +"</p>" ;
+ }
+ function errorHandler(error) {
+ var output = document.getElementById("geo");
+ switch (error.code) {
+ case error.PERMISSION_DENIED:
+ output.innerHTML = "Użytkownik nie udostępnił danych.";
+break;
+ case error.POSITION_UNAVAILABLE:
+ output.innerHTML = "Dane lokalizacyjne niedostępne.";
+break;
+ case error.TIMEOUT:
+ output.innerHTML = "Przekroczono czas żądania.";
+ break;
+ case error.UNKNOWN_ERROR:
+ output.innerHTML = "Wystąpił nieznany błąd.";
+break;
+ }
+ }
+ function getLocation() {
+ if (navigator.geolocation) {
+ var options = {timeout: 600};
+ navigator.geolocation.getCurrentPosition(
+ showLocation,
+errorHandler,
+options);
+ } else { alert("Twoja przeglądarka nie wspiera geolokalizacji!");}
+ }
+ </script>
+</head>
+<body>
+
+<div class='container'>
+
+	<!-- naglowek --> 
+	<header>
+            <h4>Sklep rowerowy</h4>
+            <h2>Bicykl - wszystko dla twojego roweru</h2>
+            <img src="images/header.jpg" alt=""/>
+	</header>
+	
+	<!-- menu --> 
+	<aside>
+		<nav>
+			<ul>
+				<li><a href="index.html">Start</a></li>
+				<li><a href="formularz.html">Formularz</a></li>
+				<li><a href="galeria.html">Galeria</a></li>
+				<li><a href="kontakt.html">Kontakt</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<!-- txt -->
+	<section id="main">
+		<h1>Kontakt</h1>
+                <p>Specjalistyczny sklep rowerowy BICYKL<br> ul. Związkowa 10 (blisko uczelni WSPiA i RK Niedziałek)<br> 20-148 Lublin<br> NIP: 713-105-84-81</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13588.438484677374!2d22.565407220549016!3d51.26650219460143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4722575358a2757f%3A0x3946d94eed98cc1!2sZwi%C4%85zkowa+10%2C+20-148+Lublin!5e0!3m2!1spl!2spl!4v1494016011141" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>                 
+	        <div id="facebook_slider_widget" style="display: none"><script type="text/javascript" src="http://webfrik.pl/widget/facebook_slider.html?fb_url=https://www.facebook.com/Bicyklon/?fref=ts&amp;fb_width=290&amp;fb_height=590&amp;fb_faces=true&amp;fb_stream=true&amp;fb_header=true&amp;fb_border=true&amp;fb_theme=light&amp;chx=787&amp;speed=FAST&amp;fb_pic=sign&amp;position=LEFT"></script></div>
+
+                
+                <br>  <div id="geo"></div>
+ <p><button onclick="getLocation()">Pokaż moją lokalizację</button></p>
+
+        </section>
+	
+	<!-- stopka -->
+	<footer>
+		<p>Tomasz DUL© 2017</p>
+	</footer>
+
+</div>
+
+</body>
+</html>
