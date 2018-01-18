@@ -1,8 +1,8 @@
 <!DOCTYPE HTML> 
 <html lang='pl'> 
 <head>
-	<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 	<title>BICYKL - sklep rowerowy -</title>
 	<link rel='stylesheet' href='css/style.css'>
             <script>
@@ -24,7 +24,7 @@
               function pokazDane()
 {
    
- var dane="Następujące dane zostaną wysłane:\n";
+ dane="Następujące dane zostaną wysłane:\n";
  dane+="Email: "+document.getElementById('email').value+"\n"+
          "Imie i nazwisko: "+document.getElementById('name').value+"\n"+
           "Telefon: "+document.getElementById('number').value+"\n";
@@ -45,8 +45,7 @@ if (document.getElementById("add6").checked){dane+="Dodatki: "+document.getEleme
 
 dane+="Dodatkowe informacje: "+document.getElementById('text').value;         
  if (window.confirm(dane)) return true;
- else 
-     return false;
+ else return false;
 };</script>
 </head>
 <body>
@@ -76,16 +75,16 @@ dane+="Dodatkowe informacje: "+document.getElementById('text').value;
 	<section id="main">
 		
 		
-  <form action="/zamowienia.php" method="post">
-     <div><h2>Formularz zamówienia</h2></div>
+                   <form action="#" method="post">
+        <div><h2>Formularz zamówienia</h2></div>
         <fieldset>
-            <legend>Dane</legend>
+            <legend>Dane do wysyłki</legend>
             <label for="name"> Imię i nazwisko</label>
             <input type="text" name="contact_person" id="name" required pattern="[A-Za-z]{3,} [A-Za-z]{2,}" /><br/>
             <label for="email"> e-mail</label>
             <input type="email" name="email" id="email"  placeholder="j.kowalski@domena.pl" required/><br/>
             <label for="number">Telefon</label>
-            <input type="number" name="number" id="number" pattern="^[0-9\-\+\s\(\)]{8}" placeholder="+48123456789" required/><br/>
+            <input type="tel" name="number" id="number" minlength="9" maxlength="12" placeholder="+48123456789" required/><br/>
         </fieldset>
         <fieldset>
             <legend>Typ roweru</legend>
